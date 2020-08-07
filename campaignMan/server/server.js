@@ -4,12 +4,15 @@ const express = require('express');
 const app = express();
 //Use a variable to hold the port and the process.env functionality for hosting the application
 const PORT = process.env.PORT || 5000
-//Express app to register this Route handler with. Watch for incoming http requests with GET method.
+
+//Express app to register this Route handler with. Watch for incoming http requests of GET method.
 //Watch for requests trying to access "/simpleserver". req is the object representing the incoming request
-//res is the object representing the outgoing response. Immediately send some json back "to browser user requesting this".
+//res is the object representing the outgoing response. 
 app.get("/simpleserver", function(req, res) {
+  //Immediately send some json back "to browser user requesting this".
   res.send({msg: 'This is added to the browser'})
 });
+
 //Make express app listen on the port and console what port we are listening.
 app.listen(PORT, function(req, res) {
   console.log(`Listening on ${PORT}`)
