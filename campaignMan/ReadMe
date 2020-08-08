@@ -1,8 +1,10 @@
-Heroku links
+Heroku links:
+
 To visit app inside the browser:
-https://rocky-beach-01842.herokuapp.com/ 
+young-mountain-60774
+https://young-mountain-60774.herokuapp.com/
 
-Deployment target. Git repository to push local server:
-https://git.heroku.com/rocky-beach-01842.git
+Deployment target. Git remote repository to push local server:
+https://git.heroku.com/young-mountain-60774.git
 
-https://git.heroku.com/campaignman.git
+Sign guest list (using google oath) or skip signing guest book
