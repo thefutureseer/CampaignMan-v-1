@@ -2,18 +2,17 @@
 const express = require('express');
 //Use a variable to hold express functionality ready to rock and roll
 const app = express();
-//Use a variable to hold the port and the process.env functionality for hosting the application
+//Use a variable to hold the port and the process.env functionality for hosting the application.
+//Hosting: process.env.PORT is listening making sure were on the port Heroku tells us to be on or 5000 for dev.
 const PORT = process.env.PORT || 5000
 
 //Express app to register this Route handler with. Watch for incoming http requests of GET method.
-//Watch for requests trying to access "/simpleserver". req is the object representing the incoming request
+//Watch for requests trying to access "/". req is the object representing the incoming request
 //res is the object representing the outgoing response. 
-app.get("/simpleserver", function(req, res) {
-  //Immediately send some json back "to browser user requesting this".
+app.get("/", function(req, res) {
+  //No request for it just Immediately send some json back to browser as a test.
   res.send({msg: 'This is added to the browser'})
 });
 
-//Make express app listen on the port and console what port we are listening.
-app.listen(PORT, function(req, res) {
-  console.log(`Listening on ${PORT}`)
-});
+//Express app listen on port, empty callback function runs backend console.log for what port were listening to.
+app.listen(PORT, () => console.log(`Listening on ${PORT}`));
