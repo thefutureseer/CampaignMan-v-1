@@ -1,13 +1,12 @@
 //Common J.S. modules to bring in express with the require key word to create a server.
 const express = require('express');
-
 //Keys to mongodb
 const keys = require('./config/keys');
-
-//Mongo atlas database
+//Mongo atlas database, mongoose functionality
 const mongoose = require('mongoose');
-
-//Require passport just need to run the passport file. Nothing being returned.
+//As app loads mongo loads
+require('./models/User');
+//Require passport automatically run the passport file. Nothing being returned.
 require('./services/passport')
 
 //Connect to mongo atlas
