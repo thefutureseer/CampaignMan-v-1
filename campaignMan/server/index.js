@@ -10,7 +10,7 @@ require('./models/User');
 require('./services/passport')
 
 //Connect to mongo atlas
-mongoose.connect(keys.mongoURI)
+mongoose.connect(keys.mongoURI, {useUnifiedTopology: true, useNewUrlParser: true })
 
 //Use a variable to hold express functionality. declaration ready to rock and roll.
 const app = express();

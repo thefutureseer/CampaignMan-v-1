@@ -20,8 +20,16 @@ passport.use(
      callbackURL: '/auth/google/callback'
    },
    (accessToken, refreshToken, profile, done) => {
-    //Use model class to create new model instance in the database
-    new User({googlClientID: profile.id}).save();
+    //First search for profile.id then create a new one
+    User.findOne({ googleId: profile.id }).then(existingUser => {
+      if (existingUser) {
+        //If user exists do nothing
+        //console.log("Profile id here: " + profile.id);
+      } else {
+        //Use model class to create new model instance in the database
+        new User({ googleId: profile.id }).save();
+      }
+    });
    }
   )
  );

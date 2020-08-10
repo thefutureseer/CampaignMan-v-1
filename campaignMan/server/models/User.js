@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const {Schema} = mongoose;
 
 const userSchema = new Schema({
-  GoogleId: String,
+  googleId: String,
   date: {type: Date, default: Date.now}
 });
 
