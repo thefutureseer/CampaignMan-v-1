@@ -4,7 +4,4 @@ To visit app inside the browser:
 young-mountain-60774
 https://young-mountain-60774.herokuapp.com/
 
-Deployment target. Git remote repository to push local server:
-https://git.heroku.com/young-mountain-60774.git
-
 Sign guest list (using google oath) or skip signing guest book
