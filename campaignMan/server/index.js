@@ -33,7 +33,7 @@ app.use(passport.session());
 //Require auth routes and immediately envoke with argument of 'app'.
 require('./routes/authRoutes')(app);
 
-//Use a variable to hold the port and the process.env functionality for hosting the application.
+//Use a variable to hold the port and the process.env to look for environment variables functionality for hosting the application.
 //Hosting: process.env.PORT is listening making sure were on the port Heroku tells us to be on or 5000 for dev.
 const PORT = process.env.PORT || 5000
 

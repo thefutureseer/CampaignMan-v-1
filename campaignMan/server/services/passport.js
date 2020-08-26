@@ -40,12 +40,13 @@ passport.use(
    {
      clientID: keys.googleClientID,
      clientSecret: keys.googleClientSecret,
-     callbackURL: '/auth/google/callback'
+     callbackURL: '/auth/google/callback',
+     proxy: true
    },
-   (accessToken, refreshToken, profile, done) => {
+    (accessToken, refreshToken, profile, done) => {
     //First search for profile.id then create a new one. Never use 
     //profile id again after user exists.
-    User.findOne({ googleId: profile.id }).then(existingUser => {
+     User.findOne({ googleId: profile.id }).then(existingUser => {
       if (existingUser) {
         //If user exists do nothing. We already have a record.
         //console.log("Profile id here: " + profile.id (googleID));
@@ -53,7 +54,7 @@ passport.use(
       } else {
         //If no user found, Use model class to create new model 
         //instance in the database. Save it and make sure its there
-        new User({ googleId: profile.id }).save().then(user => {
+         new User({ googleId: profile.id }).save().then(user => {
           done(null, user);
         });
       }
