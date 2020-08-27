@@ -2,6 +2,7 @@ Heroku links:
 
 To visit app inside the browser:
 young-mountain-60774
-https://young-mountain-60774.herokuapp.com/
+ Link:
+https://young-mountain-60774.herokuapp.com/auth/google
 
 Sign guest list (using google oath) or skip signing guest book
