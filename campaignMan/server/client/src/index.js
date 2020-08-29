@@ -1,17 +1,16 @@
+//Startup essentially redux side of app and render root
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import ReactDom from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware} from 'redux';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+import App from './components/App';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+//Create a new instance of store with createStore with three arguments: 1) a single
+//dummy reducer that returns an empty array,
+// 2) empty object is/will be the starting or initial state of app for server side rendering  
+//3) applyMiddleware with thunk
+const store = createStore(()=>[],)
+//Connect the redux store (which is created at the very top level 
+//of app) by passing it as a prop to react side of app by using react-redux's "Provider"
+ReactDom.render(<Provider store={store}><App/></Provider>, document.querySelector("#root"))

@@ -19,7 +19,6 @@ passport.serializeUser((user, done) => {
   //a shortcut to find the user in mongo
  done(null, user.id);
 });
-
 //Turn id back into a user.
 passport.deserializeUser((id, done) => {
   //Use model class which is capital u User.
@@ -32,7 +31,6 @@ passport.deserializeUser((id, done) => {
     done(null, user)
   })
 });
-
 //Take passport library and inform it how to make use of GoogleStrategy
 //new instance of the passport strategy
 passport.use(
@@ -43,22 +41,22 @@ passport.use(
      callbackURL: '/auth/google/callback',
      proxy: true
    },
-    (accessToken, refreshToken, profile, done) => {
+   //Any time the database that is an asyncronis action and will
+   //always involve a promise which must be delt with
+   async (accessToken, refreshToken, profile, done) => {
     //First search for profile.id then create a new one. Never use 
     //profile id again after user exists.
-     User.findOne({ googleId: profile.id }).then(existingUser => {
+    const existingUser = await User.findOne({ googleId: profile.id });
       if (existingUser) {
         //If user exists do nothing. We already have a record.
         //console.log("Profile id here: " + profile.id (googleID));
-        done(null, existingUser);
+        return done(null, existingUser);
       } else {
         //If no user found, Use model class to create new model 
         //instance in the database. Save it and make sure its there
-         new User({ googleId: profile.id }).save().then(user => {
-          done(null, user);
-        });
+        const user = await new User({ googleId: profile.id }).save();
+        done(null, user);
       }
-    });
    }
   )
  );
