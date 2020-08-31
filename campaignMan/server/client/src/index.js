@@ -9,7 +9,7 @@ import reducers from './reducers';
 import App from './components/App';
 
 //Create a new instance of store with createStore with three arguments: 
-//1) a reducer that returns an array,
+//1) a reducer that returns an array, combine reducers
 //2) an empty object is/will be the starting or initial state of app for server side rendering  
 //3) applyMiddleware with thunk
 const store = createStore(reducers , {}, applyMiddleware())
